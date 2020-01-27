@@ -1,0 +1,44 @@
+﻿@using BlueInsurance.ViewModel;
+@using BlueInsurance.Constants;
+@{
+    var menus = HttpContext.Current.Session[AppConstants.MenuListSession] as List<MenuVM>;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @foreach (var i in menus)
+                    {
+                        <li>@Html.ActionLink(i.MenuName, i.ActionName, i.ControllerName)</li>
+                    }
+
+                    <li>@Html.ActionLink("Logout", "Login", "Account")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

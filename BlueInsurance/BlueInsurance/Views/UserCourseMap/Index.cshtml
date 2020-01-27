@@ -1,0 +1,75 @@
+﻿@using DAL.Models;
+@using BlueInsurance.Constants;
+@model List<vUserCourseMap>
+@{
+    var userType = HttpContext.Current.Session[AppConstants.UserTypeSession].ToString().TrimEnd();
+    int count = Model.Count;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        <div class="box1">
+            @if (userType == AppConstants.StudentUserType && count >= 5)
+            {
+                <label><b>Maximum number of course registration reached</b></label>
+            }
+            else
+            {
+                <a href="/UserCourseMap/GetById?Id=0">Register Course</a>
+            }
+        </div>
+    </div>
+    <div class="box1">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Staff Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    @if (userType == AppConstants.AdminUserType)
+                    {
+                        <th>Student Name</th>
+                    }
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td><a href="/UserCourseMap/GetById?Id=@i.UserCourseMapId">edit</a></td>
+                        <td>@i.CourseCode</td>
+                        <td>@i.CourseName</td>
+                        <td>@i.TeacherName</td>
+                        <td>@i.StartDate</td>
+                        <td>@i.EndDate</td>
+                        @if (userType == AppConstants.AdminUserType)
+                        {
+                            <td>@i.FirstName</td>
+                        }
+                        <td><a href="/UserCourseMap/Delete?Id=@i.UserCourseMapId">delete</a></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<style>
+    .box1 {
+        display: block;
+        padding: 10px;
+        margin-top: 50px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+    }
+</style>
+

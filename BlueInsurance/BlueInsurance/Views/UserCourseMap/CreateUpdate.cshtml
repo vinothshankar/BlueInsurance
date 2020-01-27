@@ -1,0 +1,100 @@
+﻿@using DAL.Models;
+@using BlueInsurance.Constants;
+@model vUserCourseMap
+@{
+    var studentList = HttpContext.Current.Session[AppConstants.StudentListSession] as List<UserMaster>;
+    var courseList = HttpContext.Current.Session[AppConstants.CourseListSession] as List<CourseMaster>;
+    var userType = HttpContext.Current.Session[AppConstants.UserTypeSession].ToString().TrimEnd();
+    var userId = int.Parse(HttpContext.Current.Session[AppConstants.UserIdSession].ToString().TrimEnd());
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="box1">
+        <form id="form1">
+            <input type="hidden" name="UserCourseMapId" id="UserCourseMapId" value="@Model.UserCourseMapId" />
+            @if (userType == AppConstants.AdminUserType)
+            {
+                <label>Staff Name</label>
+                <select name="UserId" id="UserId">
+                    @foreach (var i in studentList)
+                    {
+                        <option value="@i.UserId">@i.FirstName</option>
+                    }
+                </select><br />
+            }
+            else
+            {
+                <input type="hidden" id="UserId" name="UserId" value="@userId" />
+            }
+
+            <label>Choose Course</label>
+            <select name="CourseId" id="CourseId">
+                @foreach (var i in courseList)
+                {
+                    <option value="@i.CourseId">@i.CourseName</option>
+                }
+            </select><br />
+
+            <input type="button" id="SubmitForm" value="Submit" />
+            <input type="button" onclick="window.location.href = '/UserCourseMap/Index';" value="Cancel" />
+        </form>
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#SubmitForm").click(function () {
+            var formData = $('#form1').serialize();
+            $.ajax({
+                type: "POST",
+                url: "/UserCourseMap/Upsert",
+                data: formData,
+                dataType: "json",
+
+                success: function (result) {
+                    // Result.
+                    if (result == "1") {
+                        window.location.href = "/UserCourseMap/Index";
+                    } else {
+                        alert(result)
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //do your own thing
+                    debugger;
+                }
+            });
+        });
+    });
+</script>
+
+@if (Model.UserCourseMapId > 0)
+{
+    <text>
+        <script>
+            $(document).ready(function () {
+                $("#UserId").val("@Model.UserId");
+                $("#CourseId").val("@Model.CourseId");
+            });
+
+        </script>
+    </text>
+}
+
+<style>
+    .box1 {
+        display: block;
+        padding: 10px;
+        margin-top: 50px;
+        text-align: justify;
+    }
+</style>
+

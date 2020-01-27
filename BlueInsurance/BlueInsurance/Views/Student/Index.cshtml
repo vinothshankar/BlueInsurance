@@ -1,0 +1,110 @@
+﻿@using DAL.Models;
+@using BlueInsurance.Constants;
+@model List<UserMaster>
+@{
+    var userType = HttpContext.Current.Session[AppConstants.UserTypeSession].ToString().TrimEnd();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        @if (userType == AppConstants.AdminUserType)
+        {
+
+
+
+            <div class="filterdiv">
+
+                <form method="post" action="/Student/FilterIndex">
+                    <label>First Name</label>
+                    <input type="text" name="FirstName" /><br />
+                    <label>SurName</label>
+                    <input  type="text" name="SurName" /><br />
+                    <input class="button1" type="submit" />
+                </form>
+            </div>
+            <div class="box1">
+                <a href="/Student/GetById?Id=0">Create Student</a>
+            </div>
+        }
+    </div>
+    <div class="box2">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>First Name</th>
+                    <th>SurName</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Address1</th>
+                    <th>Address2</th>
+                    <th>Address3</th>
+                    @if (userType == "ADMIN")
+                    {
+                        <th>User Type</th>
+                        <th>Delete</th>
+                    }
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td><a href="/Student/GetById?Id=@i.UserId">edit</a></td>
+                        <td>@i.FirstName</td>
+                        <td>@i.SurName</td>
+                        <td>@i.Email</td>
+                        <td>@i.Gender</td>
+                        <td>@i.DOB</td>
+                        <td>@i.Address1</td>
+                        <td>@i.Address2</td>
+                        <td>@i.Address3</td>
+                        @if (userType == "ADMIN")
+                        {
+                            <td>@i.UserType</td>
+                            <td><a href="/Student/Delete?Id=@i.UserId">delete</a></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<style>
+    .box1 {
+        display: block;
+        margin-top: 10px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+        margin-left:10px;
+        margin-bottom:20px;
+    }
+
+    .box2 {
+        display: block;
+        margin-top: 30px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+        margin-left:10px;
+        margin-bottom:20px;
+    }
+    .filterdiv {
+        display: block;
+        margin-top: 50px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+        margin-left:400px;
+    }
+    .button1 {
+        display: block;
+        margin-top: 10px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+        margin-left:100px;
+    }
+   
+</style>

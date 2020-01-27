@@ -1,0 +1,11 @@
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\DAL.dll.config
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\DAL.dll
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\DAL.pdb
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\EntityFramework.dll
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\EntityFramework.xml
+F:\Projects\BlueInsurance\BlueInsurance\DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\BlueInsurance\BlueInsurance\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+F:\Projects\BlueInsurance\BlueInsurance\DAL\obj\Debug\DAL.csproj.CopyComplete
+F:\Projects\BlueInsurance\BlueInsurance\DAL\obj\Debug\DAL.dll
+F:\Projects\BlueInsurance\BlueInsurance\DAL\obj\Debug\DAL.pdb

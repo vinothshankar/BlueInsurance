@@ -1,0 +1,99 @@
+﻿@using DAL.Models;
+@using BlueInsurance.Constants;
+@model vCourseMaster
+
+@{
+    var staffs = HttpContext.Current.Session[AppConstants.StaffListSession] as List<UserMaster>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="box1">
+        <form method="post" action="/Course/CreateOrUpdate">
+            <input type="hidden" name="CourseId" id="CourseId" value="@Model.CourseId" />
+            <label>Course Code</label>
+            <input type="text" name="CourseCode" id="CourseCode" value="@Model.CourseCode" required /><br />
+            <label>Course Name</label>
+            <input type="text" name="CourseName" id="CourseName" value="@Model.CourseName" required /><br />
+
+            <label>Staff Name</label>
+            <select name="TeacherId" id="TeacherId">
+                @foreach (var i in staffs)
+                {
+                    <option value="@i.UserId">@i.FirstName</option>
+                }
+            </select><br />
+            <label>Start Date</label>
+            <input type="date" name="StartDate" id="StartDate"><br />
+            <label>End Date</label>
+            <input type="date" name="EndDate" id="EndDate"><br />
+            <label>MaxSeats</label>
+            <input type="number" name="MaxSeats" id="MaxSeats" value="@Model.MaxSeats" /><br />
+
+            <input type="submit" />
+            <input type="button" onclick="window.location.href = '/Course/Index';" value="Cancel" />
+        </form>
+
+    </div>
+</body>
+</html>
+
+<style>
+    .box1 {
+        display: block;
+        padding: 10px;
+        margin-top: 50px;
+        text-align: justify;
+    }
+</style>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+@if (Model.CourseId > 0)
+{
+    <text>
+        <script>
+            $(document).ready(function () {
+                    var startday = 0;
+                    if ("@Model.StartDate.Day".length > 1) {
+                        startday = "@Model.StartDate.Day";
+                    } else {
+                        startday = ("0" + "@Model.StartDate.Day");
+                    }
+
+                    var endday = 0;
+                    if ("@Model.EndDate.Day".length > 1) {
+                        endday = "@Model.EndDate.Day";
+                    } else {
+                        endday = ("0" + "@Model.EndDate.Day");
+                    }
+
+                    var startmonth = 0;
+                    if ("@Model.StartDate.Month".length > 1) {
+                        startmonth = "@Model.StartDate.Month";
+                    } else {
+                        startmonth = ("0" + ("@Model.StartDate.Month"));
+                    }
+
+                    var endmonth = 0;
+                    if ("@Model.EndDate.Month".length > 1) {
+                        endmonth = "@Model.EndDate.Month";
+                    } else {
+                        endmonth = ("0" + ("@Model.EndDate.Month"));
+                    }   
+
+                var sdate = "@Model.StartDate.Year" + "-" + (startmonth) + "-" + (startday);
+                var edate = "@Model.EndDate.Year" + "-" + (endmonth) + "-" + (endday);
+                $('#StartDate').val(sdate);
+                $('#EndDate').val(edate);
+                $("#TeacherId").val("@Model.TeacherId");
+            });
+
+        </script>
+    </text>
+}

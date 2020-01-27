@@ -1,0 +1,99 @@
+﻿@using DAL.Models;
+@using BlueInsurance.Constants;
+@model UserMaster
+@{
+    var userType = HttpContext.Current.Session[AppConstants.UserTypeSession].ToString().TrimEnd();
+    List<string> userTypesList = new List<string>();
+    userTypesList.Add("STUDENT");
+    if (userType == AppConstants.AdminUserType)
+    {
+        userTypesList.Add("ADMIN");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="box1">
+        <form method="post" action="/Student/CreateOrUpdate">
+            <input type="hidden" name="UserId" id="UserId" value="@Model.UserId" />
+            <label>First Name</label>
+            <input type="text" name="FirstName" id="FirstName" value="@Model.FirstName" required /><br />
+            <label>SurName</label>
+            <input type="text" name="SurName" id="SurName" value="@Model.SurName" required /><br />
+            <label>Email</label>
+            <input type="text" name="Email" id="Email" value="@Model.Email" required /><br />
+            <label>Gender</label>
+            <select name="Gender" id="Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br />
+            <label>DOB</label>
+            <input type="date" name="DOB" id="DOB" value="@Model.DOB.Date"><br />
+            <label>Address1</label>
+            <input type="text" name="Address1" id="Address1" value="@Model.Address1" /><br />
+            <label>Address2</label>
+            <input type="text" name="Address2" id="Address2" value="@Model.Address2" /><br />
+            <label>Address3</label>
+            <input type="text" name="Address3" id="Address3" value="@Model.Address3" /><br />
+            <label>User Type</label>
+            <select name="UserType" id="UserType">
+                @foreach (var i in userTypesList)
+                {
+                    <option value=@i>@i</option>
+                }
+
+            </select><br />
+            <input type="submit" />
+            <input type="button" onclick="window.location.href = '/Student/Index';" value="Cancel" />
+        </form>
+
+    </div>
+</body>
+</html>
+
+<style>
+    .box1 {
+        display: block;
+        padding: 10px;
+        margin-top: 50px;
+        text-align: justify;
+    }
+
+</style>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+
+@if (Model.UserId > 0)
+{
+    <text>
+        <script>
+            $(document).ready(function () {
+                    var day = 0;
+                    if ("@Model.DOB.Day".length > 1) {
+                        day = "@Model.DOB.Day";
+                    } else {
+                        day = ("0" + "@Model.DOB.Day");
+                    }
+                    var month = 0;
+                    if ("@Model.DOB.Month".length > 1) {
+                        month = "@Model.DOB.Month";
+                    } else {
+                        month = ("0" + ("@Model.DOB.Month"));
+                    }
+                    var ddate = "@Model.DOB.Year"+"-" + (month) + "-" + (day);
+                    $('#DOB').val(ddate);
+                $("#UserType").val("@Model.UserType");
+                $("#Gender").val("@Model.Gender.TrimEnd()");
+            });
+
+        </script>
+    </text>
+}
+

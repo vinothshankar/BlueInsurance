@@ -1,0 +1,60 @@
+﻿@using DAL.Models;
+@model List<vCourseMaster>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    <div class="box1">
+        <a href="/Course/GetById?Id=0">Create Course</a>
+    </div>
+    <div class="box2">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Staff Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>MAX Seats</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td><a href="/Course/GetById?Id=@i.CourseId">edit</a></td>
+                        <td>@i.CourseCode</td>
+                        <td>@i.CourseName</td>
+                        <td>@i.FirstName</td>
+                        <td>@i.StartDate</td>
+                        <td>@i.EndDate</td>
+                        <td>@i.MaxSeats</td>
+                        <td><a href="/Course/Delete?Id=@i.CourseId">delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<style>
+    .box1 {
+        display: block;
+        padding: 10px;
+        margin-top: 50px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+    }
+     .box2 {
+        display: block;
+        padding: 10px;
+        margin-top: 30px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+        text-align: justify;
+    }
+</style>

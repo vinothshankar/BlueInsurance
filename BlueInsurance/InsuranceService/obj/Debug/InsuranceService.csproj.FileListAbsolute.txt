@@ -1,0 +1,14 @@
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\InsuranceService.dll.config
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\InsuranceService.dll
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\InsuranceService.pdb
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\DAL.dll
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\EntityFramework.dll
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\DAL.pdb
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\DAL.dll.config
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\EntityFramework.xml
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\obj\Debug\InsuranceService.csprojAssemblyReference.cache
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\obj\Debug\InsuranceService.csproj.CopyComplete
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\obj\Debug\InsuranceService.dll
+F:\Projects\BlueInsurance\BlueInsurance\InsuranceService\obj\Debug\InsuranceService.pdb

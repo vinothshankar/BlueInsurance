@@ -1,0 +1,11 @@
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityLayer.dll.config
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityLayer.dll
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityLayer.pdb
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityFramework.dll
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityFramework.xml
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\obj\Debug\EntityLayer.csprojAssemblyReference.cache
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\obj\Debug\EntityLayer.csproj.CopyComplete
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\obj\Debug\EntityLayer.dll
+F:\Projects\BlueInsurance\BlueInsurance\EntityLayer\obj\Debug\EntityLayer.pdb
