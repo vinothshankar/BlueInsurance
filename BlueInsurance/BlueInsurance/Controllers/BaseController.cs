@@ -19,13 +19,20 @@ namespace BlueInsurance.Controllers
        
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            _baseService = new BaseService<T, V>();
-            _utilityService = new UtilityService();
-            var data = _utilityService.getLookUpData();
-            Session[AppConstants.StaffListSession] = data.Item1.Where(a=>a.UserType==AppConstants.AdminUserType).ToList();
-            Session[AppConstants.StudentListSession] = data.Item1.Where(a => a.UserType == AppConstants.StudentUserType).ToList();
-            Session[AppConstants.CourseListSession] = data.Item2;
-            base.OnActionExecuting(filterContext);
+            if (Session.Count > 0)
+            {
+                _baseService = new BaseService<T, V>();
+                _utilityService = new UtilityService();
+                var data = _utilityService.getLookUpData();
+                Session[AppConstants.StaffListSession] = data.Item1.Where(a => a.UserType == AppConstants.AdminUserType).ToList();
+                Session[AppConstants.StudentListSession] = data.Item1.Where(a => a.UserType == AppConstants.StudentUserType).ToList();
+                Session[AppConstants.CourseListSession] = data.Item2;
+                base.OnActionExecuting(filterContext);
+            }
+            else
+            {
+                filterContext.Result = RedirectToAction("Login", "Account");
+            }
         }
 
         [HttpGet]
